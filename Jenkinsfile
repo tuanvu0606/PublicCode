@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any 
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -14,17 +14,19 @@ pipeline {
         file(name: "FILE", description: "Choose a file to upload")
     }
     stages {
-        stage('Example') {
+        stage('Build') { 
             steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
+                echo 'build'
+            }
+        }
+        stage('Test') { 
+            steps {
+                echo 'test'
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo 'deploy'
             }
         }
     }
