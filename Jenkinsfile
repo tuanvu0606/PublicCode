@@ -1,6 +1,6 @@
 pipeline {
-  agent any
-  parameters {
+    agent any
+    parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
@@ -12,7 +12,8 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 
         file(name: "FILE", description: "Choose a file to upload")
-  stages {
+    }
+    stages {
         stage('Example') {
             steps {
                 echo "Hello ${params.PERSON}"
@@ -27,5 +28,4 @@ pipeline {
             }
         }
     }
-}
 }
