@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
-                sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
+                sh "/usr/local/rvm/rubies/ruby-2.5.3/bin/ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
             }
         }
         stage('Test') { 
