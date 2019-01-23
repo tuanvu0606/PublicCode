@@ -15,10 +15,8 @@ pipeline {
     }
     stages {
         stage('Build') { 
-            steps {
-                echo 'build'
-                sh 'ruby html_parsing.rb'
-            }
+              echo 'build'
+              sh 'ruby html_parsing.rb'
         }
         stage('Test') { 
             steps {
