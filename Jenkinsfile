@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
-                sh "./html_parsing.rb"
+                sh "ruby ./html_parsing.rb"
             }
         }
         stage('Test') { 
