@@ -17,7 +17,7 @@ pipeline {
         stage('Build') { 
             steps {
                 echo 'build'
-                sh 'ruby ${workspace}/html_parsing.rb'
+                sh ruby html_parsing.rb
             }
         }
         stage('Test') { 
