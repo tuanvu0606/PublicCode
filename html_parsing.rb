@@ -8,9 +8,9 @@ page = Nokogiri::HTML(open(PAGE_URL))
 
 h1  = page.at_css "h1"
 
-h1.content = "Snap, Crackle & Pop"
+#h1.content = "Snap, Crackle & Pop"
 
-#puts page.css("div")
+puts PAGE_URL
 
 output = page.css("div").to_s
 
