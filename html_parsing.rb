@@ -3,7 +3,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
    
-html_data = open('http://web.archive.org/web/20090220003702/http://www.sitepoint.com/').read
+html_data = open('/var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/TheCoffeeHouse_creative_300x250_v1.html').read
 nokogiri_object = Nokogiri::HTML(html_data)
 tagcloud_elements = nokogiri_object.xpath("//ul[@class='tagcloud']/li/a")
 
