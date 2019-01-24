@@ -17,7 +17,7 @@ pipeline {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
     }
     stages {
-        stage('Build') { 
+        stage('Parsing HTML') { 
             steps {
                 sh "which ruby"
                 sh "which gem"
