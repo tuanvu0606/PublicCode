@@ -8,7 +8,9 @@ page = Nokogiri::HTML(open(PAGE_URL))
    
 puts page.css("div")
 
+output = page.css("div").to_s
+
 f = File.new('out.html', 'w')
-f.write(page.css("div"))
+f.write()
 f.write("Hello Foo!\n")
 f.close    
