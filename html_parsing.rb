@@ -10,3 +10,8 @@ tagcloud_elements = nokogiri_object.xpath("//ul[@class='tagcloud']/li/a")
 tagcloud_elements.each do |tagcloud_element|
   puts tagcloud_element.text
 end
+
+f = File.new('out.txt', 'w')
+f.write("Hello World!\n")
+f.write("Hello Foo!\n")
+f.close    
