@@ -12,4 +12,5 @@ output = page.css("div").to_s
 
 f = File.new('out.html', 'w')
 f.write(page.css("div"))
+f.write("div")
 f.close    
