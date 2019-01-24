@@ -13,12 +13,15 @@ pipeline {
 
         file(name: "FILE", description: "Choose a file to upload")
     }
+    environment {
+    PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
+    }
     stages {
         stage('Build') { 
             steps {
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
-                sh "/usr/local/rvm/rubies/ruby-2.5.3/bin/ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
+                sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
             }
         }
         stage('Test') { 
