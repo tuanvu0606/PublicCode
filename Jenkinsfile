@@ -39,11 +39,11 @@ pipeline {
             steps {
                 echo 'test'
             }
-        }
-        post {
+        }        
+    }
+    post {
             always {
                 archiveArtifacts artifacts: '*.rb', onlyIfSuccessful: true
             }
-        }
     }
 }
