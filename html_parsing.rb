@@ -17,3 +17,7 @@ output = page.css("div").to_s
 f = File.new('out.html', 'w')
 f.write(page.to_html)
 f.close    
+
+ARGV.each do|a|
+  puts "Argument: #{a}"
+end
