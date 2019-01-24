@@ -43,7 +43,7 @@ pipeline {
     }
     post {
             always {
-                archiveArtifacts artifacts: '*.rb', onlyIfSuccessful: true
+                archiveArtifacts artifacts: '*.html', onlyIfSuccessful: true
             }
     }
 }
