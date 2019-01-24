@@ -2,17 +2,40 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'css_parser'
+include CssParser
+
    
-PAGE_URL = ARGV[0].to_s
+#PAGE_URL = ARGV[0].to_s
+
+#IMG_URL = ARGV[1].to_s 
+
+PAGE_URL = "https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_4.html"
+
+IMG_URL = "https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg"
+
+#get the page, parse it
 page = Nokogiri::HTML(open(PAGE_URL))
 
-h1  = page.at_css "h1"
+#get the image tag img
+img  = page.css('img')
 
-#h1.content = "Snap, Crackle & Pop"
+#get the color of from_to class span
+from_to_spans = page.css('script')
 
-puts PAGE_URL
+#puts from_to_spans
 
-output = page.css("div").to_s
+from_to_spans.each{|link| puts link['style'] }
+
+#scrape css
+css = page.css('style')
+
+#puts css
+
+#puts img[0]["src"]
+img[0]["src"] = IMG_URL
+
+#output = page.css("div").to_s
 
 f = File.new('out.html', 'w')
 f.write(page.to_html)
@@ -21,3 +44,8 @@ f.close
 ARGV.each do|a|
   puts "Argument: #{a}"
 end
+
+parser = CssParser::Parser.new
+css_parser = parser.load_string! css.to_s
+
+puts css_parser
