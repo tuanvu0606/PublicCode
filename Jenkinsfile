@@ -2,7 +2,7 @@
 pipeline {
     agent any 
     parameters {
-        string(name: 'HTML_BANNER-LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3.html', description: 'Please input your link to public html banner?')
+        string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3.html', description: 'Please input your link to public html banner?')
 
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
@@ -25,7 +25,7 @@ pipeline {
                 //sh "gem install google_places"
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
-                sh "ruby ${workspace}/html_parsing.rb"
+                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK}"
                 //sh "echo $JOB_NAME"
                 //sh "echo $BUILD_TAG"
                 //sh "echo ${workspace}"
