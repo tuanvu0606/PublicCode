@@ -10,7 +10,7 @@ h1  = page.at_css "h1"
 
 h1.content = "Snap, Crackle & Pop"
 
-puts page.css("div")
+#puts page.css("div")
 
 output = page.css("div").to_s
 
