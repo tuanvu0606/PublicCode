@@ -2,7 +2,8 @@
 pipeline {
     agent any 
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'html banner link', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3.html
+', description: 'Please input your link to public html banner?')
 
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
