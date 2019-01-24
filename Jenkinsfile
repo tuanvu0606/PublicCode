@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Export HTML') { 
             steps {
-                def files = findFiles(glob: '*.*')
+                
             }
         }
     }
