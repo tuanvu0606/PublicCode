@@ -4,9 +4,9 @@
   <style>
     #ab{
     position: absolute;
-    top: 70px;
-    width:300px;
-    font-size: 14px;
+    top: 370px;
+    width:320px;
+    font-size: 90%;
     text-align:center;
     }
     h3{
@@ -19,7 +19,7 @@
 
     h3 {
       font-family: Lato;
-      color: Chocolate;
+      color: white;
       animation: blinker 1s linear infinite;
       font-size: 90%;
     }
@@ -30,7 +30,7 @@
       }
     }
   </style>
-</head>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/9806C538-4045-374E-A7B3-4E2BD054D8A8/main.js" charset="UTF-8"></script></head>
 <script src="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/index.js"></script>
 <script type="text/javascript">
 
@@ -42,9 +42,12 @@ var click_v4 = "http://google.com";
 var click_client = "";
 var platform_macro = "";
 
+navigator.geolocation.getCurrentPosition(function(location) {
+  latitude_1 = location.coords.latitude;
+  longitude_1 = location.coords.longitude;
 
-latitude_1 = parseFloat("__ADFLAT__");
-longitude_1 = parseFloat("__ADFLNG__");
+//latitude_1 = parseFloat("__ADFLAT__");
+//longitude_1 = parseFloat("__ADFLNG__");
 
   var rad = function(x) {
     return x * Math.PI / 180;
@@ -94,8 +97,8 @@ setTimeout(function(){
 
 //  Change color Character
 var change_color = document.getElementById("ab");
-change_color.innerHTML= change_color.innerHTML.replace(decodeURI("C%C3%92N"), "<span style='color:SaddleBrown;'>"+decodeURI("C%C3%92N")+"</span>");
-change_color.innerHTML= change_color.innerHTML.replace(decodeURI("%C4%90%E1%BA%BEN"), "<span style='color:SaddleBrown;'>"+decodeURI("%C4%90%E1%BA%BEN")+"</span>");
+change_color.innerHTML= change_color.innerHTML.replace(decodeURI("C%C3%92N"), "<span style='color:black;'>"+decodeURI("C%C3%92N")+"</span>");
+change_color.innerHTML= change_color.innerHTML.replace(decodeURI("%C4%90%E1%BA%BEN"), "<span style='color:black;'>"+decodeURI("%C4%90%E1%BA%BEN")+"</span>");
 
  destination_url = "https://maps.google.com/?saddr=" + latitude_1+"," + longitude_1+"&daddr="+ store_lat+"," + store_lng;;
 // });
@@ -116,11 +119,13 @@ change_color.innerHTML= change_color.innerHTML.replace(decodeURI("%C4%90%E1%BA%B
   createImgEl(imp_client);
 createImgEl(imp_v4);
 
+});
+
 </script>
 
 <body>
   <a onclick="trackClick()">
-  <img src="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg" alt="Trulli">
+  <img src="https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/CoffeeHouse%23banner001_320x480px_22jan.jpg" alt="Trulli">
   <div id="ab">
 </a>
   
