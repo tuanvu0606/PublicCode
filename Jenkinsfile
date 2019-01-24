@@ -26,7 +26,7 @@ pipeline {
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
                 sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
-                sh "echo "JOB_NAME" :: %JOB_NAME%"
+                sh "echo %JOB_NAME%"
             }
         }
         stage('Test') { 
