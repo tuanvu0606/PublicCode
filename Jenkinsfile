@@ -28,6 +28,7 @@ pipeline {
                 sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
                 sh "echo $JOB_NAME"
                 sh "echo $BUILD_TAG"
+                sh "echo ${workspace}"
             }
         }
         stage('Test') { 
