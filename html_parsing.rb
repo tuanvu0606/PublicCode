@@ -3,7 +3,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
    
-PAGE_URL = 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html'
+PAGE_URL = ARGV[0].to_s
 page = Nokogiri::HTML(open(PAGE_URL))
 
 h1  = page.at_css "h1"
