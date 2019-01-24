@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Export HTML') { 
             steps {
-                
+                echo 'test'
             }
         }
     }
