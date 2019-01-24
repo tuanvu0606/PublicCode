@@ -26,10 +26,10 @@ pipeline {
                 //sh "gem install google_places"
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
-                sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
-                sh "echo $JOB_NAME"
-                sh "echo $BUILD_TAG"
-                sh "echo ${workspace}"
+                sh "ruby ${workspace}/html_parsing.rb"
+                //sh "echo $JOB_NAME"
+                //sh "echo $BUILD_TAG"
+                //sh "echo ${workspace}"
             }
         }
         stage('Test') { 
