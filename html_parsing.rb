@@ -11,6 +11,5 @@ puts page.css("div")
 output = page.css("div").to_s
 
 f = File.new('out.html', 'w')
-f.write(output)
-f.write("Hello Foo!\n")
+f.write(page.css("div"))
 f.close    
