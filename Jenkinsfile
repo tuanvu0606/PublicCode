@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh "which ruby"
                 sh "which gem"
-                sh "gem install nokogiri"
+                
                 sh "chmod +x -R ./html_parsing.rb"
                 sh "pwd"
                 sh "ruby /var/lib/jenkins/workspace/AWS_flashing_creatives_pipeline/html_parsing.rb"
