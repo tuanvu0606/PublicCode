@@ -40,5 +40,10 @@ pipeline {
                 echo 'test'
             }
         }
+        post {
+            always {
+                archiveArtifacts artifacts: '*.rb', onlyIfSuccessful: true
+            }
+        }
     }
 }
