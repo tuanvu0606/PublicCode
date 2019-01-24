@@ -11,7 +11,7 @@ tagcloud_elements.each do |tagcloud_element|
   puts tagcloud_element.text
 end
 
-f = File.new('out.txt', 'w')
+f = File.new('out.html', 'w')
 f.write(tagcloud_elements)
 f.write("Hello Foo!\n")
 f.close    
