@@ -64,8 +64,8 @@ setTimeout(function(){
 
 //  Change color Character
 var change_color = document.getElementById("ab");
-change_color.innerHTML= change_color.innerHTML.replace(decodeURI("C%C3%92N"), "<span style='color:red;'>"+decodeURI("C%C3%92N")+"</span>");
-change_color.innerHTML= change_color.innerHTML.replace(decodeURI("%C4%90%E1%BA%BEN"), "<span style='color:black;'>"+decodeURI("%C4%90%E1%BA%BEN")+"</span>");
+change_color.innerHTML= change_color.innerHTML.replace(decodeURI("C%C3%92N"), "<span style='color:hahah;'>"+decodeURI("C%C3%92N")+"</span>");
+change_color.innerHTML= change_color.innerHTML.replace(decodeURI("%C4%90%E1%BA%BEN"), "<span style='color:hahah;'>"+decodeURI("%C4%90%E1%BA%BEN")+"</span>");
 
  destination_url = "https://maps.google.com/?saddr=" + latitude_1+"," + longitude_1+"&daddr="+ store_lat+"," + store_lng;;
 // });
