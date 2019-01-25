@@ -63,7 +63,7 @@ pipeline {
             success {
                 echo 'I succeeeded!'
                 withAWS(region:'ap-southeast-1',profile:'jenkins_iam_user') {
-                    s3Upload(file:'*.html', bucket:'tuan.vu.yoose', path:'/public_creatives/file.html')
+                    //s3Upload(file:'*.html', bucket:'tuan.vu.yoose', path:'/public_creatives/file.html')
                 }
             }            
     }
