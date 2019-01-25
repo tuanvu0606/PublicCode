@@ -3,7 +3,6 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 require 'css_parser'
-include CssParser
 
    
 #PAGE_URL = ARGV[0].to_s
@@ -28,7 +27,14 @@ from_to_spans = page.css('script')
 from_to_spans.each{|link| puts link['style'] }
 
 #scrape css
-css = page.css('style')
+css = page.css('style').text
+
+css_parser = CssParser::Parser.new
+css_parser.load_string! css
+
+css_parser.find_by_selector('#ab') = 'haha'
+
+puts css_parser.find_by_selector('#ab')
 
 #puts css
 
@@ -45,7 +51,6 @@ ARGV.each do|a|
   puts "Argument: #{a}"
 end
 
-parser = CssParser::Parser.new
-css_parser = parser.load_string! css.to_s
 
-puts css_parser
+
+
