@@ -10,6 +10,8 @@ pipeline {
 
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
 
+        choice(name: 'FROM_TO_COLOR', choices: ['red', 'white', 'brown'], description: 'Pick from to color')
+
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 
         file(name: "FILE", description: "Choose a file to upload")
@@ -20,12 +22,22 @@ pipeline {
     stages {
         stage('Parsing HTML') { 
             steps {
+                //check ruby version
                 sh "which ruby"
                 sh "which gem"
                 //sh "gem install google_places"
-                sh "chmod +x -R ./html_parsing.rb"
+                //change wokring mode to execute for python and ruby scripts
+                sh "chmod +x -R ./html_parsing.rb"  
+                sh "chmod +x -R ./css_utils_parsing.py"
+                sh "chmod +x -R ./js_modify.py"
                 sh "pwd"
+
+                //parse html, change HTML and image source files url                
                 sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK}"
+
+                //parse javascript, change color from from_to characters.
+                sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
+
                 //sh "echo $JOB_NAME"
                 //sh "echo $BUILD_TAG"
                 //sh "echo ${workspace}"
