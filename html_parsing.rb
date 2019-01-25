@@ -2,7 +2,6 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
-require 'css_parser'
 
    
 #PAGE_URL = ARGV[0].to_s
