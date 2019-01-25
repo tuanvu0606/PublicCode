@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-git add -A 
+git add -A
 git commit -m "updated"
 git push
