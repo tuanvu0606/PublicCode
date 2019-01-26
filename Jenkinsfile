@@ -61,8 +61,8 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-                sh "echo ${workspace}/builds/${BUILD_NUMBER}"
-                sh """aws s3 cp ${workspace}/builds/${BUILD_NUMBER} s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
+                sh "echo ${JOB_NAME}/builds/${BUILD_NUMBER}"
+                //sh """aws s3 cp ${workspace}/builds/${BUILD_NUMBER} s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
             }       
         }            
     }
