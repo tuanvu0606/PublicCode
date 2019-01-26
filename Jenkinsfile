@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 import java.util.Date
+def now = new Date()
 
 pipeline {
     agent any 
@@ -29,7 +30,7 @@ pipeline {
     stages {
         stage('Install all dependencies') { 
             steps {                
-
+                println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
                 //check ruby version
