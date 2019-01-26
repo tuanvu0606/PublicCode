@@ -37,6 +37,8 @@ script[1]["src"]= JAVASCRIPT_URL
 
 #puts script
 
+puts page.to_html
+
 f = File.new( VERSION + '.html', 'w')
 f.write(page.to_html)
 f.close    
