@@ -39,8 +39,8 @@ pipeline {
     }
     stages {        
         stage('Install all dependencies') { 
-            step([$class: 'WsCleanup'])
-            steps {                      
+            steps {             
+                step([$class: 'WsCleanup'])         
                 println formatted_now          
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
