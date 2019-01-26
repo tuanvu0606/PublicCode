@@ -69,7 +69,6 @@ pipeline {
             steps {
                 //parse javascript, change color from from_to characters.
                 sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
-
             }
         }
         stage('Export HTML') { 
