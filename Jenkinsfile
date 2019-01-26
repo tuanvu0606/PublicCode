@@ -2,6 +2,7 @@
 
 import java.util.Date
 def now = new Date()
+def formatted_now =  now.format("mmHH.ddMMyy", TimeZone.getTimeZone('UTC')).toString()
 
 pipeline {
     agent any 
@@ -29,8 +30,8 @@ pipeline {
     }
     stages {
         stage('Install all dependencies') { 
-            steps {                
-                println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+            steps {      
+                println formatted_now          
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
                 //check ruby version
