@@ -61,7 +61,7 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-            withAWS(credentials:'AWS Access Key: AKIAI3ZE3RAGKKYZWORA, AWS Secret Key: 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',region:'ap-southeast-1') { 
+            withAWS(credentials:'AKIAI3ZE3RAGKKYZWORA,uvNO0s/M9/UwQ/ybpirVYQ6pxvIkpuORAsDhUI36',region:'ap-southeast-1') { 
                 s3Upload(file : "out.html", bucket : 'tuan.vu.yoose', path : "/") 
             }       
         }            
