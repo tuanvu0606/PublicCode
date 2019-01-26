@@ -62,7 +62,7 @@ pipeline {
         }
         success {
                 sh "echo ${workspace}/builds/${BUILD_NUMBER}"
-                sh "aws s3 cp ${workspace}/builds/${BUILD_NUMBER} s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"
+                sh """aws s3 cp ${workspace}/builds/${BUILD_NUMBER} s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
             }       
         }            
     }
