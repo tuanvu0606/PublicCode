@@ -21,6 +21,8 @@ VERSION = ARGV[4].to_s
 #get the page, parse it
 page = Nokogiri::HTML(open(PAGE_URL))
 
+puts PAGE_URL
+
 #get the image tag img
 img = page.css('img')
 img[0]["src"] = IMG_URL
