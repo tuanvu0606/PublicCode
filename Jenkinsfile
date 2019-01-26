@@ -15,6 +15,8 @@ pipeline {
 
         choice(name: 'FROM_TO_COLOR', choices: ['red', 'white', 'brown'], description: 'Pick from to color')
 
+        choice(name: 'STORE_COLOR', choices: ['white', 'red', 'blue'], description: 'Pick from to color')
+
         choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha'], description: 'Pick from to color')
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
@@ -25,6 +27,19 @@ pipeline {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
     }
     stages {
+        stage('Install all dependencies') { 
+            steps {                
+
+                //sh "pip install awscli --upgrade --user"
+                //sh "gem install google_places"
+                //check ruby version
+                sh "which ruby"
+                sh "which gem"
+                sh "chmod +x -R ./html_parsing.rb"  
+                sh "chmod +x -R ./css_utils_parsing.py"
+                sh "chmod +x -R ./js_modify.py"                
+            }
+        }        
         stage('Parsing HTML') { 
             steps {                
 
@@ -33,26 +48,28 @@ pipeline {
                 sh "which ruby"
                 sh "which gem"
                 //sh "gem install google_places"
-                //change wokring mode to execute for python and ruby scripts
-                sh "chmod +x -R ./html_parsing.rb"  
-                sh "chmod +x -R ./css_utils_parsing.py"
-                sh "chmod +x -R ./js_modify.py"
-                sh "pwd"
+                //change wokring mode to execute for python and ruby scripts                
+                //sh "pwd"
 
                 //parse html, change HTML and image source files url                
                 sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${currentBuild.startTimeInMillis}"
-
-                //parse javascript, change color from from_to characters.
-                sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
 
                 //sh "echo $JOB_NAME"
                 //sh "echo $BUILD_TAG"
                 //sh "echo ${workspace}"
             }
         }
-        stage('Test') { 
+        stage('Parsing CSS') { 
+            steps {                
+                //parse css by css utils
+                sh "python ${workspace}/css_utils_parsing.py ${params.STORE_COLOR}"                
+            }
+        }
+        stage('Parsing Java Scripts') { 
             steps {
-                echo 'test'
+                //parse javascript, change color from from_to characters.
+                sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
+
             }
         }
         stage('Export HTML') { 
@@ -67,9 +84,9 @@ pipeline {
             archiveArtifacts artifacts: '*.css', onlyIfSuccessful: true
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
-        success {
-                sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive"
-                sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${params.CAMPAIGN}/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --include "*.js" --include "*.css" --acl public-read"""
+        success {            
+            sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive"
+            sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${params.CAMPAIGN}/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --include "*.js" --include "*.css" --acl public-read"""
             }       
         }            
     }

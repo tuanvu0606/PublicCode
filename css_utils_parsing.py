@@ -6,7 +6,7 @@ parser = cssutils.parseFile('style.css')
 for rule in parser.cssRules:
     try:
         if rule.selectorText == '#ab':
-            rule.style.backgroundColor = 'blue'  # Replace background
+            rule.style.backgroundColor = str(sys.argv[0])  # Replace background
     except AttributeError as e:
         pass  # Ignore error if the rule does not have background
 
