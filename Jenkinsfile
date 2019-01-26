@@ -2,8 +2,6 @@
 
 import java.util.Date
 
-def date = new Date()
-
 pipeline {
     agent any 
     parameters {
@@ -42,7 +40,7 @@ pipeline {
                 sh "pwd"
 
                 //parse html, change HTML and image source files url                
-                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} date"
+                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${currentBuild.startTimeInMillis}"
 
                 //parse javascript, change color from from_to characters.
                 sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
