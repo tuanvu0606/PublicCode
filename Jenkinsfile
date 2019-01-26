@@ -61,8 +61,7 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-            withAWS(profile:'aws_jenkins',region:'ap-southeast-1') { 
-                s3Upload(file : "out.html", bucket : 'tuan.vu.yoose', path : "/") 
+                sh "echo $JOB_NAME"
             }       
         }            
     }
