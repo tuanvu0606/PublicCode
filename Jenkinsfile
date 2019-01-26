@@ -4,11 +4,11 @@ import java.util.Date
 def now = new Date()
 def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangkok')).toString()
 
-// Wipe the workspace so we are building completely clean
-deleteDir()
-
 pipeline {
     agent any 
+    // Wipe the workspace so we are building completely clean
+    deleteDir()
+
     parameters {
         string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_4.html')
 
