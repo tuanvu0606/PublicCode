@@ -2,7 +2,7 @@
 
 import java.util.Date
 def now = new Date()
-def formatted_now =  now.format("mmHH.ddMMyy", TimeZone.getTimeZone('UTC')).toString()
+def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('UTC+7')).toString()
 
 pipeline {
     agent any 
@@ -54,7 +54,7 @@ pipeline {
                 //sh "pwd"
 
                 //parse html, change HTML and image source files url                
-                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${currentBuild.startTimeInMillis}"
+                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} $formatted_now"
 
                 //sh "echo $JOB_NAME"
                 //sh "echo $BUILD_TAG"
