@@ -3,6 +3,7 @@
 import java.util.Date
 def now = new Date()
 def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangkok')).toString()
+def exported_pool = "https://s3-ap-southeast-1.amazonaws.com/tuan.vu.yoose"
 
 // Wipe the workspace so we are building completely clean
 //deleteDir()
@@ -11,7 +12,7 @@ def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangk
 pipeline {
     agent any 
     parameters {
-        string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_4.html')
+        string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/flashing_creatives_base.html')
 
         string(name: 'IMAGE_URL', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg')
         
@@ -51,6 +52,7 @@ pipeline {
 
                 //sh "pip install awscli --upgrade --user"
                 //check ruby version
+                println exported_pool
                 sh "which ruby"
                 sh "which gem"
                 //sh "gem install google_places"
