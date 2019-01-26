@@ -61,7 +61,7 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-                sh "echo $JOB_NAME"
+                sh "echo $BUILD_TAG"
             }       
         }            
     }
