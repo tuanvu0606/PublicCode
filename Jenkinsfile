@@ -6,11 +6,11 @@ pipeline {
         
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')        
 
         choice(name: 'FROM_TO_COLOR', choices: ['red', 'white', 'brown'], description: 'Pick from to color')
+
+        choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha'], description: 'Pick from to color')
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 
@@ -63,7 +63,7 @@ pipeline {
         }
         success {
                 sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive"
-                sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${params.FROM_TO_COLOR}/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
+                sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${params.CAMPAIGN}/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
             }       
         }            
     }
