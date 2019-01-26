@@ -4,7 +4,7 @@ pipeline {
     parameters {
         string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html')
         
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')        
 
