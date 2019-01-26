@@ -7,7 +7,7 @@ pipeline {
     parameters {
         string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html')
 
-        string(name: 'IMAGE_URL', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html')
+        string(name: 'IMAGE_URL', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg')
         
         //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
@@ -40,7 +40,7 @@ pipeline {
                 sh "pwd"
 
                 //parse html, change HTML and image source files url                
-                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${currentBuild.startTimeInMillis}"
+                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${currentBuild.startTimeInMillis}"
 
                 //parse javascript, change color from from_to characters.
                 sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
