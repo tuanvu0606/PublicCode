@@ -63,7 +63,7 @@ pipeline {
         }
         success {
                 sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive"
-                sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
+                sh """~/.local/bin/aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${params.FROM_TO_COLOR}/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
             }       
         }            
     }
