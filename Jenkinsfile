@@ -3,6 +3,8 @@ pipeline {
     agent any 
     parameters {
         string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html')
+
+        string(name: 'IMAGE_URL', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/TheCoffeeHouse_creative_3+-+Copy.html')
         
         //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
@@ -22,7 +24,10 @@ pipeline {
     stages {
         stage('Parsing HTML') { 
             steps {
-                sh "pip install awscli --upgrade --user"
+
+                def date = new Date()
+                
+                //sh "pip install awscli --upgrade --user"
                 //check ruby version
                 sh "which ruby"
                 sh "which gem"
@@ -34,7 +39,7 @@ pipeline {
                 sh "pwd"
 
                 //parse html, change HTML and image source files url                
-                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK}"
+                sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} date"
 
                 //parse javascript, change color from from_to characters.
                 sh "python ${workspace}/js_modify.py ${params.FROM_TO_COLOR}"                
