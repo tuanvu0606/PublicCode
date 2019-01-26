@@ -53,14 +53,7 @@ pipeline {
         }        
         stage('Parsing HTML') { 
             steps {                
-                //sh "pip install awscli --upgrade --user"
-                //check ruby version
                 println exported_pool
-                sh "which ruby"
-                sh "which gem"
-                //sh "gem install google_places"
-                //change wokring mode to execute for python and ruby scripts                
-                //sh "pwd"
 
                 //parse html, change HTML and image source files url                
                 sh "ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} exported_pool/newprefs.js exported_pool/style_new.css formatted_now"
