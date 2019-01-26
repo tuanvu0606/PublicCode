@@ -29,6 +29,8 @@ pipeline {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
     }
     stages {
+        // Wipe the workspace so we are building completely clean
+        deleteDir()
         stage('Install all dependencies') { 
             steps {      
                 println formatted_now          
