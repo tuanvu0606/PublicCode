@@ -62,7 +62,7 @@ pipeline {
         }
         success {
             withAWS(profile:'jenkins_aws',region:'ap-southeast-1') { 
-            s3Upload(file : "*", bucket : 'tuan.vu.yoose', path : "/") 
+            s3Upload(file : "out.html", bucket : 'tuan.vu.yoose', path : "/") 
             }       
         }            
     }
