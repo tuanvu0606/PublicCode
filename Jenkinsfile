@@ -2,7 +2,7 @@
 
 import java.util.Date
 def now = new Date()
-def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('UTC+7')).toString()
+def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangkok')).toString()
 
 pipeline {
     agent any 
