@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import cssutils
+import sys
 
 # Parse the stylesheet, replace color
 parser = cssutils.parseFile('style.css')
