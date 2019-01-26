@@ -63,7 +63,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'o*.html', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '*.html', onlyIfSuccessful: true
             archiveArtifacts artifacts: '*.css', onlyIfSuccessful: true
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
