@@ -4,6 +4,9 @@ import java.util.Date
 def now = new Date()
 def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangkok')).toString()
 
+// Wipe the workspace so we are building completely clean
+deleteDir()
+
 pipeline {
     agent any 
     parameters {
@@ -28,9 +31,7 @@ pipeline {
     environment {
     PATH = "/usr/local/rvm/rubies/ruby-2.5.3/bin/:$PATH"
     }
-    stages {
-        // Wipe the workspace so we are building completely clean
-        deleteDir()
+    stages {        
         stage('Install all dependencies') { 
             steps {      
                 println formatted_now          
