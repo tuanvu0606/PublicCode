@@ -63,7 +63,7 @@ pipeline {
         success {
             echo 'I succeeeded!'
             withAWS(region:'ap-southeast-1',profile:'jenkins_iam_user') { 
-                def identity = awsIdentity();         
+                def identity = awsIdentity()     
                 s3Upload(file:'*.*',bucket:'tuan.vu.yoose',includePathPattern:'**/*')
             }            
         }            
