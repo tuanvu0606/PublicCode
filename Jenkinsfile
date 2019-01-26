@@ -62,7 +62,7 @@ pipeline {
         }
         success {
             withAWS(credentials:'AKIAI3ZE3RAGKKYZWORA,uvNO0s/M9/UwQ/ybpirVYQ6pxvIkpuORAsDhUI36',region:'ap-southeast-1') { 
-            s3Upload(file : "*.*", bucket : 'tuan.vu.yoose'') 
+            s3Upload(file : "*.*", bucket : 'tuan.vu.yoose', path : "/") 
             }       
         }            
     }
