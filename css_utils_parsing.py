@@ -10,6 +10,8 @@ for rule in parser.cssRules:
     try:
         if rule.selectorText == '#ab':
             rule.style.backgroundColor = str(sys.argv[1])  # Replace background
+            rule.style.top = str(sys.argv[2])  # Replace top_to_text_distance         
+            rule.style.width = str(sys.argv[3])  # Replace width of text
     except AttributeError as e:
         pass  # Ignore error if the rule does not have background
 

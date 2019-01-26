@@ -15,6 +15,10 @@ pipeline {
         string(name: 'HTML_BANNER_LINK', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/flashing_creatives_base.html')
 
         string(name: 'IMAGE_URL', defaultValue: 'https://s3-ap-southeast-1.amazonaws.com/yoose-tmp/Banner_for_v4/TheCoffeeHouse_1/BANNER-web-300x250.jpg')
+
+        string(name: 'DISTANCE_FROM_TOP_TO_FLASHING_TEXT', defaultValue: '50px', description: 'distance of flashing text from top')
+
+        string(name: 'WIDTH_OF_TEXT', defaultValue: '300px', description: 'width of flashing text')
         
         //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
@@ -69,7 +73,7 @@ pipeline {
         stage('Parsing CSS') { 
             steps {                
                 //parse css by css utils
-                sh "python ${workspace}/css_utils_parsing.py ${params.STORE_COLOR}"                
+                sh "python ${workspace}/css_utils_parsing.py ${params.STORE_COLOR} ${params.DISTANCE_FROM_TOP_TO_FLASHING_TEXT} ${params.WIDTH_OF_TEXT}"                
             }
         }
         stage('Parsing Java Scripts') { 
