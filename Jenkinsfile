@@ -57,7 +57,7 @@ pipeline {
                 println exported_pool
 
                 //parse html, change HTML and image source files url                
-                sh """ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${exported_pool}/newprefs.js ${exported_pool}/style_new.css ${formatted_now}"""
+                sh """ruby ${workspace}/html_parsing.rb ${params.HTML_BANNER_LINK} ${params.IMAGE_URL} ${exported_pool}/${params.CAMPAIGN}/${BUILD_NUMBER}/newprefs.js ${exported_pool}/${params.CAMPAIGN}/${BUILD_NUMBER}/style_new.css ${formatted_now}"""
 
                 //sh "echo $JOB_NAME"
                 //sh "echo $BUILD_TAG"
