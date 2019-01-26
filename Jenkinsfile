@@ -61,7 +61,7 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-                sh "echo $BUILD_TAG"
+                sh "echo ${workspace}/builds/${BUILD_NUMBER}"
             }       
         }            
     }
