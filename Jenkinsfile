@@ -61,21 +61,9 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-            step([
-                $class: 'S3BucketPublisher',
-                entries: [[
-                    sourceFile: '*.*',
-                    bucket: 'tuan.vu.yoose',
-                    selectedRegion: 'ap-southeast-1',
-                    noUploadOnFailure: true,
-                    managedArtifacts: true,
-                    flatten: true,
-                    showDirectlyInBrowser: true,
-                    keepForever: true,
-                ]],
-                profileName: 'jenkins_iam_user_1',
-                dontWaitForConcurrentBuildCompletion: false, 
-            ])              
+            withAWS(credentials:'AKIAI3ZE3RAGKKYZWORA,uvNO0s/M9/UwQ/ybpirVYQ6pxvIkpuORAsDhUI36',region:'ap-southeast-1') { 
+            s3Upload(file : "*.*", bucket : 'tuan.vu.yoose'', path : "/") 
+            }       
         }            
     }
 }
