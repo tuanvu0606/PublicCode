@@ -61,8 +61,8 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-                sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}"
-                //sh """aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER} s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
+                sh "echo /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive"
+                sh """aws s3 cp /var/lib/jenkins/jobs/AWS_flashing_creatives_pipeline/builds/${BUILD_NUMBER}/archive s3://tuan.vu.yoose/${BUILD_NUMBER} --recursive --exclude "*" --include "*.html" --acl public-read"""
             }       
         }            
     }
