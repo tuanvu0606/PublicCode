@@ -39,6 +39,7 @@ pipeline {
     }
     stages {        
         stage('Install all dependencies') { 
+            step([$class: 'WsCleanup'])
             steps {                      
                 println formatted_now          
                 //sh "pip install awscli --upgrade --user"
