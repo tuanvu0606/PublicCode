@@ -1,4 +1,9 @@
 #!/usr/bin/env groovy
+
+import java.util.Date
+
+def date = new Date()
+
 pipeline {
     agent any 
     parameters {
@@ -23,10 +28,8 @@ pipeline {
     }
     stages {
         stage('Parsing HTML') { 
-            steps {
+            steps {                
 
-                def date = new Date()
-                
                 //sh "pip install awscli --upgrade --user"
                 //check ruby version
                 sh "which ruby"
