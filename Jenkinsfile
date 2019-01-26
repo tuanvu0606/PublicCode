@@ -5,7 +5,7 @@ def now = new Date()
 def formatted_now =  now.format("HH:mm.ddMMyy", TimeZone.getTimeZone('Asia/Bangkok')).toString()
 
 // Wipe the workspace so we are building completely clean
-deleteDir()
+//deleteDir()
 
 
 pipeline {
@@ -34,7 +34,8 @@ pipeline {
     }
     stages {        
         stage('Install all dependencies') { 
-            steps {      
+            steps {     
+                step([$class: 'WsCleanup']) 
                 println formatted_now          
                 //sh "pip install awscli --upgrade --user"
                 //sh "gem install google_places"
