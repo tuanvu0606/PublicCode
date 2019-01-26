@@ -61,11 +61,21 @@ pipeline {
             archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {
-            echo 'I succeeeded!'
-            withAWS(region:'ap-southeast-1',profile:'jenkins_iam_user') { 
-                def identity = awsIdentity()     
-                s3Upload(file:'*.*',bucket:'tuan.vu.yoose',includePathPattern:'**/*')
-            }            
+            step([
+                $class: 'S3BucketPublisher',
+                entries: [[
+                    sourceFile: '*.*',
+                    bucket: 'tuan.vu.yoose',
+                    selectedRegion: 'ap-southeast-1',
+                    noUploadOnFailure: true,
+                    managedArtifacts: true,
+                    flatten: true,
+                    showDirectlyInBrowser: true,
+                    keepForever: true,
+                ]],
+                profileName: 'jenkins_iam_user',
+                dontWaitForConcurrentBuildCompletion: false, 
+            ])              
         }            
     }
 }
