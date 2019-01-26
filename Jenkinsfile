@@ -22,6 +22,7 @@ pipeline {
     stages {
         stage('Parsing HTML') { 
             steps {
+                pip install awscli --upgrade --user
                 //check ruby version
                 sh "which ruby"
                 sh "which gem"
