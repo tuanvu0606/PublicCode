@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 git commit -m "Updated"
-git push
+git push origin master

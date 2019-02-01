@@ -39,7 +39,7 @@ script[1]["src"]= JAVASCRIPT_URL
 
 puts page.to_html
 
-f = File.new( VERSION + '.html', 'w')
+f = File.new('after_processed' + VERSION + '.html', 'w')
 f.write(page.to_html)
 f.close    
 
