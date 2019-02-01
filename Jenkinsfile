@@ -24,9 +24,9 @@ pipeline {
 
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')        
 
-        choice(name: 'FROM_TO_COLOR', choices: ['red', 'white', 'brown'], description: 'Pick from to color')
+        string(name: 'FROM_TO_COLOR', defaultValue: 'black', description: 'Pick from to color')
 
-        choice(name: 'STORE_COLOR', choices: ['white', 'red', 'blue'], description: 'Pick from to color')
+        string(name: 'STORE_COLOR', defaultValue: 'white', description: 'Pick store color')
 
         choice(name: 'CAMPAIGN', choices: ['The_Coffee_House', 'Honda', 'Yamaha'], description: 'Pick from to color')
 
