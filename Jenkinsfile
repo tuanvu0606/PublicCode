@@ -86,7 +86,7 @@ pipeline {
         always {
             archiveArtifacts artifacts: '*.html', onlyIfSuccessful: true
             archiveArtifacts artifacts: '*.css', onlyIfSuccessful: true
-            //archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '*.js', onlyIfSuccessful: true
         }
         success {            
             sh "echo /var/lib/jenkins/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/archive"
